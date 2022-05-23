@@ -97,7 +97,7 @@
                         {{-- <ul class="options"></ul> --}}
                     </div>
                     <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between border-gray-300 px-2 py-1">
-                        <input class="text-black" type="text" name="search" id="search" placeholder="Search....">
+                        <input class="appearance-none text-black placeholder-black" type="text" name="search" id="search" placeholder="Search....">
                         <span><i class="fa-solid fa-magnifying-glass text-gray-300"></i></span>
 
                     </div>
@@ -125,25 +125,25 @@
 
             {{-- Add user button --}}
             <div class='w-full flex justify-end my-4'>
-                <button class='bg-green-800 py-2 px-4 text-white rounded-lg text-sm'> 
+                <button class='bg-green-800 py-2 px-4 text-white rounded-lg text-sm open-button'> 
                     Add User
                 </button>
             </div>
 
             {{-- User list --}}
-            <section class="border-2 border-blue-400">
+            <section class="border-2 border-blue-400 bg-white">
                 <div class="flex mt-4 flex-row justify-between px-5">
                     <div class ='font-bold text-lg'> List Users </div>
                     <div>
                         <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-2 py-1">
-                            <input class="text-black" type="text" name="search" id="search" placeholder="Search....">
+                            <input class="text-black placeholder-black" type="text" name="search" id="search" placeholder="Search....">
                             <span><i class="fa-solid fa-magnifying-glass text-gray-300"></i></span>
                         </div>
                     </div>
                 </div>
                 <div class="mt-4">
                     <table class="w-full table-auto">
-                        <thead class="bg-gray-100 text-left text-gray-400">
+                        <thead class="bg-gray-200 text-left text-gray-500">
                             <tr>
                                 <th> <div class="my-3 pl-5">Name</div>  </th>
                                 <th> <div class="my-3">Created Date</div>  </th>
@@ -169,11 +169,11 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td> <div class=" border-gray-300 border-b-[1px] py-5 h-[90px] text-lg"> 24 Oct, 2015</div> </td>
-                                <td><div class=" border-gray-300 border-b-[1px] py-5 h-[90px] text-lg"> CEO and Founder</div></td>
+                                <td> <div class=" border-gray-300 border-b-[1px] flex flex-row items-center h-[90px] text-lg"> 24 Oct, 2015</div> </td>
+                                <td><div class=" border-gray-300 border-b-[1px] flex flex-row items-center h-[90px] text-lg"> CEO and Founder</div></td>
                                 <td>
-                                    <div class=" mr-5 border-gray-300 border-b-[1px] flex py-5 flex-row justify-center text-center  text-gray-300 h-[90px]">
-                                        <button class="mx-3"> <x-bx-edit-alt class="h-6 w-6 inline-block" /></button>
+                                    <div class=" mr-5 border-gray-300 border-b-[1px] flex flex-row items-center justify-start text-center  text-gray-300 h-[90px]">
+                                        <button class="mx-3 open-button"> <x-bx-edit-alt class="h-6 w-6 inline-block" /></button>
                                         <button><x-css-trash class="h-6 w-6 inline-block"  /></button>
                                     </div>
                                 </td>
@@ -197,11 +197,11 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td> <div class=" border-gray-300 border-b-[1px] py-5 h-[90px] text-lg"> 24 Oct, 2015</div> </td>
-                                <td><div class=" border-gray-300 border-b-[1px] py-5 h-[90px] text-lg"> Team Lead</div></td>
+                                <td> <div class=" border-gray-300 border-b-[1px] flex flex-row items-center h-[90px] text-lg"> 24 Oct, 2015</div> </td>
+                                <td><div class=" border-gray-300 border-b-[1px] flex flex-row items-center h-[90px] text-lg"> Team Lead</div></td>
                                 <td>
-                                    <div class=" mr-5 border-gray-300 border-b-[1px] flex py-5 flex-row justify-center text-center  text-gray-300 h-[90px]">
-                                        <button class="mx-3"> <x-bx-edit-alt class="h-6 w-6 inline-block" /></button>
+                                    <div class=" mr-5 border-gray-300 border-b-[1px] flex items-center justify-start flex-row  text-center  text-gray-300 h-[90px]">
+                                        <button class="mx-3 open-button"> <x-bx-edit-alt class="h-6 w-6 inline-block" /></button>
                                         <button><x-css-trash class="h-6 w-6 inline-block"  /></button>
                                     </div>
                                 </td>
@@ -212,11 +212,178 @@
                     </table>
                 </div>
             </section>
+
+            <Section id="modal-form" class="hidden absolute w-full h-full top-0 left-0 bg-slate-300/80 flex justify-center items-center">
+                <form class="bg-white rounded w-3/4">
+                    <header class="p-5 flex flex-row justify-between border-gray-300 border-b-[0.5px]">
+                        <div class="text-lg font-semibold">Add User</div>
+                        <div><button class="close-button"><i class="fa-solid fa-xmark text-xl"></i></button></div>
+                    </header>
+                    <div class="px-5 py-3">
+                        <div class="py-3">
+                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="empolyeeID" id="search" placeholder="Employee ID *">
+                            </div>
+                        </div>
+                        <div class="grid justify-items-stretch grid-cols-2 gap-4 py-3">
+                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="firstname" id="search" placeholder="First Name *">
+                            </div>
+                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="lastname" id="search" placeholder="Last Name *">
+                            </div>
+                        </div>
+                        <div class="grid justify-items-stretch grid-cols-3 gap-4 py-3">
+                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="emailid" id="search" placeholder="Email ID*">
+                            </div>
+                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="lastname" id="search" placeholder="Last Name *">
+                            </div>
+
+                            <div class="rounded-md border-[0.2px] border-gray-300 px-3 py-1 text-sm bg-white "> 
+                                <button class="inline-flex w-full justify-between  items-center "><span class="mr-2">Select Role Type</span>  <i class="fa-solid fa-sort text-black"></i></button>
+                                {{-- <ul class="options"></ul> --}}
+                            </div>
+                            
+                        </div>
+                        <div class="grid justify-items-stretch grid-cols-3 gap-4 py-3">
+                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                                <input class="text-black w-full placeholder-black" type="text" name="username" id="search" placeholder="Username*">
+                            </div>
+                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="password" id="search" placeholder="Password*">
+                            </div>
+                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="c_password" id="search" placeholder="Confirm Password*">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <table class="w-full table-auto">
+                            <thead class="bg-gray-200 text-left text-gray-500">
+                                <tr>
+                                    <th> <div class="my-3 pl-5">Module Permission</div> </th>
+                                    <th> <div class="my-3">Read </div>  </th>
+                                    <th> <div class="my-3">Write </div> </th>
+                                    <th> <div class="my-3">Delete</div> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="">
+                                    <td>
+                                        <div class="ml-5 py-5 flex flex-row items-center border-gray-300 border-b-[1px] pr-24 h-[60px]">
+                                            <span class="font-bold text-base ">Super Admin</span>
+                                        </div>
+                                    </td>
+                                    <td> 
+                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                            <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked>
+                                        </div> 
+                                    </td>
+                                    <td> 
+                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                            <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked>
+                                        </div> 
+                                    </td>
+                                    <td> 
+                                        <div class=" mr-5 border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                            <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked>
+                                        </div> 
+                                    </td>
+                                </tr>
+
+                                <tr class="">
+                                    <td>
+                                        <div class="ml-5 py-5 flex flex-row items-center border-gray-300 border-b-[1px] pr-24 h-[60px]">
+                                            <span class="font-bold text-base ">Admin</span>
+                                        </div>
+                                    </td>
+                                    <td> 
+                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                            <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked>
+                                        </div> 
+                                    </td>
+                                    <td> 
+                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                            <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault">
+                                        </div> 
+                                    </td>
+                                    <td> 
+                                        <div class=" mr-5 border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                            <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault">
+                                        </div> 
+                                    </td>
+                                </tr>
+
+                                <tr class="">
+                                    <td>
+                                        <div class="ml-5 py-5 flex flex-row items-center border-gray-300 border-b-[1px] pr-24 h-[60px]">
+                                            <span class="font-bold text-base ">Employee</span>
+                                        </div>
+                                    </td>
+                                    <td> 
+                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                            <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked>
+                                        </div> 
+                                    </td>
+                                    <td> 
+                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                            <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault">
+                                        </div> 
+                                    </td>
+                                    <td> 
+                                        <div class=" mr-5 border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                            <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault">
+                                        </div> 
+                                    </td>
+                                </tr>
+
+                                <tr class="">
+                                    <td>
+                                        <div class="ml-5 py-5 flex flex-row items-center border-gray-300 border-b-[1px] pr-24 h-[60px]">
+                                            <span class="font-bold text-base ">HR Admin</span>
+                                        </div>
+                                    </td>
+                                    <td> 
+                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                            <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked>
+                                        </div> 
+                                    </td>
+                                    <td> 
+                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                            <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked>
+                                        </div> 
+                                    </td>
+                                    <td> 
+                                        <div class=" mr-5 border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                            <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked>
+                                        </div> 
+                                    </td>
+                                </tr>
+
+                               
+    
+                                
+                                
+                            </tbody> 
+                        </table>
+                    </div>
+                    <div class="flex flex-row justify-end p-5  border-gray-300 border-t-[1px] ">
+                        <div> <button class=" bg-blue-500 py-1 px-4 text-white rounded-lg text-sm"> Add User</button></div>
+                        <div> <button class=" close-button py-1 px-4 text-gray-300 rounded-lg text-sm"> Cancel</button></div>
+                    </div>
+
+                </form>
+            </Section>
         </div>
 
-    </div>
-    
+       
 
+
+
+    </div>
+    <script src="{{ asset('js/app.js') }}"></script>
     
 </body>
 </html>

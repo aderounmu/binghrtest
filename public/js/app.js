@@ -2164,6 +2164,28 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+var modalForm = document.getElementById('modal-form');
+var closeButtons = document.getElementsByClassName('close-button');
+var openButtons = document.getElementsByClassName('open-button');
+
+function closeModalForm(e) {
+  e.preventDefault();
+  modalForm.style.display = 'none';
+}
+
+function openModalForm(e) {
+  e.preventDefault();
+  modalForm.style.display = 'flex';
+}
+
+for (var i = 0; i < closeButtons.length; i++) {
+  closeButtons[i].addEventListener('click', closeModalForm);
+}
+
+for (var _i = 0; _i < openButtons.length; _i++) {
+  openButtons[_i].addEventListener('click', openModalForm);
+}
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
