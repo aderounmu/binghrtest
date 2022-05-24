@@ -35,11 +35,23 @@ Starting localhost using sail `make sure docker or docker desktop is running`
 ```bash
 ./vendor/bin/sail up
 ```
+once containers on docker have started start , in another terminal
 
+Compile javacript and css 
 
-once containers on docker have started start the site on  [localhost](http://localhost/)
+```bash
+npm run watch
 
+```
 
+Run migrations for laravel and seed database
+
+```bash
+./vendor/bin/sail php artisan migrate:fresh --seed  
+
+```
+
+once done the site on  [localhost](http://localhost/)
 
 ## Features
 
