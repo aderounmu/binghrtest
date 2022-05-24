@@ -7,3 +7,20 @@
 @import '~@fortawesome/fontawesome-free/css/regular';
 @import '~@fortawesome/fontawesome-free/css/solid';
 @import '~@fortawesome/fontawesome-free/css/brands';
+
+
+.Admin_tag{
+    background-color: #0395FF;
+}
+
+.Super_Admin_tag{
+    background-color: #FF2E55;
+}
+
+.Employee_tag{
+    background-color: #EFF4FB;
+}
+
+.HR_Admin_tag{
+    background-color: #00E096;
+}

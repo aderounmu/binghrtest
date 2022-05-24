@@ -10941,6 +10941,23 @@ var closeButtons = document.getElementsByClassName('close-button');
 var openButtons = document.getElementsByClassName('open-button');
 var userText = document.getElementsByClassName('user-text');
 var userForm = document.getElementById('user-form');
+var contentBody = document.getElementById('x-body');
+var closeSideBarButton = document.getElementById('close-side-bar-inner');
+var innerSideBar = document.getElementById('side-bar-inner');
+
+function toggleSideBar() {
+  if (innerSideBar.style.display === 'none') {
+    contentBody.classList.remove('ml-[4.5rem]');
+    contentBody.classList.add('ml-48');
+    innerSideBar.style.display = 'block';
+  } else {
+    innerSideBar.style.display = 'none';
+    contentBody.classList.remove('ml-48');
+    contentBody.classList.add('ml-[4.5rem]');
+  }
+}
+
+closeSideBarButton.addEventListener('click', toggleSideBar);
 
 function closeModalForm(e) {
   e.preventDefault();
@@ -10950,8 +10967,7 @@ function closeModalForm(e) {
 function openModalForm(e) {
   e.preventDefault();
   modalForm.style.display = 'flex';
-} //errorCloseButtons.addEventListener('click',closeErrorMessages);
-
+}
 
 for (var i = 0; i < closeButtons.length; i++) {
   closeButtons[i].addEventListener('click', closeModalForm);
@@ -10974,7 +10990,8 @@ var _loop = function _loop(_i) {
       document.getElementById('firstname').value = updateItem['firstname'];
       document.getElementById('username').value = updateItem['username'];
       document.getElementById('email').value = updateItem['email'];
-      document.getElementById('roles').value = updateItem['roles'];
+      document.getElementById('permission').value = updateItem['permission']; //document.getElementById('roles').value = updateItem['roles'];
+
       document.getElementById('mobile').value = updateItem['mobile'];
       document.getElementById('emplyeeID').value = updateItem['emplyeeID'];
     } else {

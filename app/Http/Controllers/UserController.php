@@ -19,7 +19,8 @@ class UserController extends Controller
     {
         //
         // $data['users'] = User::orderBy('id','desc');//->paginate(20);
-        $data['users'] = User::paginate(5);
+        // $data['users'] = User::paginate(5);
+        $data['users'] = User::get();
         return view('home',$data);
     }
 
@@ -49,17 +50,28 @@ class UserController extends Controller
             'firstname' => 'required',
             'lastname'=> 'required',
             'username' => 'required',
-            'email'=> 'required',
-            'password'=> 'required',
+            'email'=> 'required|unique:users',
+            'password'=> 'required_with:confirm_password|min:6|same:confirm_password',
+            'confirm_password' => 'min:6',
             'emplyeeID'=> 'required|unique:users',
-            'roles'=> 'required',
-            //'permission'=> 'required',
+            //'roles'=> 'required',
+            'permission'=> 'required',
             'mobile' => 'required',
         ]);
 
-        
+        $role_array = ['CEO and Founder', 'Team Lead' , 'HR' , 'Web Developer' , 'App Designer'];
 
-         $user = User::create($request->all());
+         $user = User::create([
+            'firstname' => $request->firstname,
+            'lastname'=> $request->lastname,
+            'username' => $request->username,
+            'email'=> $request->email,
+            'emplyeeID'=> $request->emplyeeID,
+            'roles'=> $role_array[array_rand($role_array)],
+            'permission'=> $request->permission,
+            'mobile' => $request->mobile,
+            'password' => $request->password
+         ]);
          $user->fill([
             'password' => Hash::make($user->password)
         ])->save();
@@ -111,8 +123,8 @@ class UserController extends Controller
             'username' => 'required',
             'email'=> 'required',
             'emplyeeID'=> 'required',
-            'roles'=> 'required',
-            //'permission'=> 'required',
+            //'roles'=> 'required',
+            'permission'=> 'required',
             'mobile' => 'required',
         ]);
          if($request->password === null){
@@ -123,8 +135,8 @@ class UserController extends Controller
                 'username' => $request->username,
                 'email'=> $request->email,
                 'emplyeeID'=> $request->emplyeeID,
-                'roles'=> $request->roles,
-                // 'permission'=> $request->id,
+                //'roles'=> $request->roles,
+                'permission'=> $request->permission,
                 'mobile' => $request->mobile,
             ]);
             

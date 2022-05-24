@@ -31,9 +31,9 @@
     @endif
     <div class='flex flex-row w-100'>
         {{-- aside --}}
-        <div class='x-sidebar fixed flex flex-row h-screen items-stretch overflow-y-auto'> 
+        <div class='x-sidebar fixed flex flex-row h-screen items-stretch overflow-y-auto z-10'> 
             {{-- side Bar outer --}}
-        <aside class="flex flex-col self-auto justify-between bg-blue-500 px-3 text-gray-100">
+        <aside  class="flex flex-col self-auto justify-between bg-blue-500 px-3 text-gray-100">
             <div class='pt-20'>
                 <ul>
                     <li class="py-4">
@@ -64,19 +64,19 @@
                 </ul>
             </div>
             <div>
-                <ul>
+                <ul class="inline-flex flex-col items-center">
                     <li class="py-4">
                         <button>
                             <span><i class="fa-solid fa-gear "></i></span>
                         </button>
                     </li>
                     <li class="py-4">
-                        <button>
-                            <img src="" alt="">
-                        </button>
+                        <a href="#">
+                            <img class="w-5 h-5 rounded-full" src="{{asset('images/16.jpeg')}}" alt="user-image"/>
+                        </a >
                     </li>
                     <li class="py-4">
-                        <button>
+                        <button id="close-side-bar-inner">
                             <x-css-menu-right class="h-5 w-5 inline-block scale-x-[-1]" />
                         </button>
                     </li>
@@ -84,10 +84,10 @@
             </div>
         </aside>
         {{-- Side Navigation inner --}}
-        <aside>
+        <aside id="side-bar-inner">
             <ul class='pt-24 pl-5'>
                 <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-monoicon-window class="h-5 w-5 inline-block" /> <span class="pl-2">Dashboard</span></li>
-                <li class="py-1 pr-5 text-blue-500 border-r-4 border-blue-500 flex flex-row items-center"> <x-uni-users-alt-o class="h-5 w-5 inline-block"/> <span class="pl-2">Users</span> </li>
+                <li class="py-1 pr-4 text-blue-500 border-r-4 border-blue-500 flex flex-row items-center"> <x-uni-users-alt-o class="h-5 w-5 inline-block"/> <span class="pl-2">Users</span> </li>
                 <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-feathericon-clipboard class="h-5 w-5 inline-block"/> <span class="pl-2">Department</span></li>
                 <li class="py-1 pr-5 text-gray-300 flex flex-row items-center">  <x-uni-users-alt-o class="h-5 w-5 inline-block"/> <span class="pl-2">Employee</span></li>
                 <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-simpleline-energy class="h-5 w-5 inline-block" /> <span class="pl-2">Activities</span></li>
@@ -102,7 +102,7 @@
 
         </div>
         {{-- Body --}}
-        <div class="x-body grow px-5 ml-48 bg-[#FAFBFD]">
+        <div id='x-body' class="x-body grow px-5 ml-48 bg-[#FAFBFD]">
             {{-- Navigation --}}
             <nav class="border-gray-300 flex flex-row border-b-[0.5px] justify-between py-4 items-center">
                 <div class="left-side flex flex-row items-center">
@@ -174,15 +174,18 @@
                                 <td>
                                     <div class="ml-5 py-5 flex flex-row justify-between items-center border-gray-300 border-b-[1px] pr-24 h-[90px]">
                                         
-                                        <div class="flex flex-row items-center">
-                                            <img src="" alt="user-image">
-                                            <div class="pl-2">
+                                        <div class="flex flex-row items-center" >
+                                           
+                                                <img class="w-10 h-10 rounded-full" src="{{asset('images/16.jpeg')}}" alt="user-image"/>
+                                            
+                                            
+                                            <div class="pl-4">
                                                 <div class="font-bold text-base">{{$user->firstname}} {{$user->lastname}}</div>
                                                 <div class="text-sm text-gray-300">{{$user->email}}</div>
                                             </div>
                                         </div>
                                         <div>
-                                            <span class="text-white text-center text-lg bg-red-500 rounded-lg py-2 block  w-[135px]">
+                                            <span class="text-white text-center {{ str_replace(' ', '_', $user->permission);}}_tag text-lg rounded-lg py-2 block  w-[135px]">
                                                 {{$user->permission}}
                                             </span>
                                         </div>
@@ -211,8 +214,8 @@
                 </div>
             
             </section>
-
-            <Section id="modal-form" class="hidden absolute w-full h-full top-0 left-0 bg-slate-300/80 flex justify-center items-center">
+            {{-- User form --}}
+            <Section id="modal-form" class="hidden absolute w-full h-full top-0 left-0 bg-slate-300/80 flex justify-center items-center z-20">
                 <form id='user-form' class="bg-white rounded w-3/4" method="POST">
                     @csrf
                     <header class="p-5 flex flex-row justify-between border-gray-300 border-b-[0.5px]">
@@ -243,13 +246,21 @@
 
                             <div class="rounded-md border-[0.2px] border-gray-300 px-3 py-1 text-sm bg-white "> 
                                 <div class=" w-full grid relative items-center ">
-                                    <select class="appearance-none  w-full justify-between bg-opacity-0 z-[1]" style="background-color: transparent;" id="roles" name="roles">
+                                    {{-- <select class="appearance-none  w-full justify-between bg-opacity-0 z-[1]" style="background-color: transparent;" id="roles" name="roles">
                                         <option>Select Role Type</option>
                                         <option value="CEO and Founder">CEO and Founder</option>
                                         <option value="Team Lead">Team Lead</option>
                                         <option value="HR">HR</option>
                                         <option value="Web Developer">Web Developer</option>
                                         <option value="App Designer">App Designer</option>
+                                    </select> --}}
+                                    <select class="appearance-none  w-full justify-between bg-opacity-0 z-[1]" style="background-color: transparent;" id="permission" name="permission">
+                                        <option>Select Role Type</option>
+                                        <option value="Super Admin">Super Admin</option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="HR Admin">HR Admin</option>
+                                        <option value="Employee">Employee</option>
+                                        {{-- <option value="App Designer">App Designer</option> --}}
                                     </select>
                                     <i class="fa-solid fa-sort text-black absolute right-2"></i>
                                 </div>
@@ -266,7 +277,7 @@
                                 <input class="inline-flex w-full text-black placeholder-black" type="text" name="password" id="password" placeholder="Password*">
                             </div>
                             <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
-                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="c_password" id="c_password" placeholder="Confirm Password*">
+                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="confirm_password" id="confirm_password" placeholder="Confirm Password*">
                             </div>
                         </div>
                     </div>
@@ -399,6 +410,11 @@
 
                 </form>
             </Section>
+
+            {{-- Footer --}}
+            <section class="mt-10 mb-5">
+                <div> <span class=" text-gray-300">© Copy right 2022</span> BingHR.io </div>
+            </section>
         </div>
 
        
@@ -418,7 +434,7 @@
                     'email': "{{$user->email}}",
                     'emplyeeID': "{{$user->emplyeeID}}",
                     'roles': "{{$user->roles}}",
-                    // 'permission': "{{$user->id}}",
+                    'permission': "{{$user->permission}}",
                     'mobile' : "{{$user->mobile}}",
                 },
 

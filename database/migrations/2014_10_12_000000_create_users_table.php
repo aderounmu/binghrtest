@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('username');
             $table->string('emplyeeID');
-            $table->string('roles');
+            $table->string('roles')->nullable();
             $table->string('mobile');
             $table->enum('permission', ['Super Admin', 'Admin', 'HR Admin', 'Employee'])->default('Admin')->nullable();
             $table->string('email')->unique();

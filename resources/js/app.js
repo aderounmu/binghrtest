@@ -7,6 +7,26 @@ const closeButtons = document.getElementsByClassName('close-button')
 const openButtons = document.getElementsByClassName('open-button')
 const userText = document.getElementsByClassName('user-text')
 const userForm = document.getElementById('user-form')
+const contentBody = document.getElementById('x-body')
+const closeSideBarButton = document.getElementById('close-side-bar-inner')
+const innerSideBar = document.getElementById('side-bar-inner')
+
+function toggleSideBar(){
+    if(innerSideBar.style.display === 'none'){
+        contentBody.classList.remove('ml-[4.5rem]')
+        contentBody.classList.add('ml-48')
+        innerSideBar.style.display = 'block'
+        
+
+    }else{
+        innerSideBar.style.display = 'none'
+        contentBody.classList.remove('ml-48')
+        contentBody.classList.add('ml-[4.5rem]')
+    }
+}
+
+closeSideBarButton.addEventListener('click',toggleSideBar);
+
 
 
 function closeModalForm(e){
@@ -19,8 +39,6 @@ function openModalForm(e){
     modalForm.style.display = 'flex'
 }
 
-
-//errorCloseButtons.addEventListener('click',closeErrorMessages);
 
 
 for(let i = 0 ; i < closeButtons.length ; i++){
@@ -41,7 +59,8 @@ for(let i = 0 ; i < openButtons.length; i++){
             document.getElementById('firstname').value = updateItem['firstname'];
             document.getElementById('username').value = updateItem['username'];
             document.getElementById('email').value = updateItem['email'];
-            document.getElementById('roles').value = updateItem['roles'];
+            document.getElementById('permission').value = updateItem['permission'];
+            //document.getElementById('roles').value = updateItem['roles'];
             document.getElementById('mobile').value = updateItem['mobile'];
             document.getElementById('emplyeeID').value = updateItem['emplyeeID'];
 
