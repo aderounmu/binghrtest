@@ -13,10 +13,10 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [UserController::class,'index'])->name('home');
+Route::post('/test/store', [UserController::class,'store'])->name('store');
 
-Route::get('/home',function (){
-    return view('home');
-});
+Route::resource('users', UserController::class)->only([
+    'store','update','destroy'
+]);
+

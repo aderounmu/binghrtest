@@ -2167,6 +2167,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 var modalForm = document.getElementById('modal-form');
 var closeButtons = document.getElementsByClassName('close-button');
 var openButtons = document.getElementsByClassName('open-button');
+var userText = document.getElementsByClassName('user-text');
+var userForm = document.getElementById('user-form');
 
 function closeModalForm(e) {
   e.preventDefault();
@@ -2176,14 +2178,41 @@ function closeModalForm(e) {
 function openModalForm(e) {
   e.preventDefault();
   modalForm.style.display = 'flex';
-}
+} //errorCloseButtons.addEventListener('click',closeErrorMessages);
+
 
 for (var i = 0; i < closeButtons.length; i++) {
   closeButtons[i].addEventListener('click', closeModalForm);
 }
 
+var _loop = function _loop(_i) {
+  openButtons[_i].addEventListener('click', function (e) {
+    //console.log(openButtons[i].dataset.edit === 'true')
+    if (openButtons[_i].dataset.edit === 'true') {
+      for (var _i2 = 0; _i2 < userText.length; _i2++) {
+        userText[_i2].innerHTML = 'Edit User';
+      }
+
+      if (document.getElementById('put-attribute') === null) userForm.innerHTML = '<input id="put-attribute" type="hidden" name="_method" value="PUT"> ' + userForm.innerHTML;
+    } else {
+      if (document.getElementById('put-attribute') !== null) userForm.removeChild(document.getElementById('put-attribute'));
+
+      for (var _i3 = 0; _i3 < userText.length; _i3++) {
+        userText[_i3].innerHTML = 'Add User';
+      }
+    }
+
+    for (var _i4 = 0; _i4 < closeButtons.length; _i4++) {
+      closeButtons[_i4].addEventListener('click', closeModalForm);
+    }
+
+    userForm.action = openButtons[_i].dataset.action;
+    openModalForm(e);
+  });
+};
+
 for (var _i = 0; _i < openButtons.length; _i++) {
-  openButtons[_i].addEventListener('click', openModalForm);
+  _loop(_i);
 }
 
 /***/ }),

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+// use App\Http\Requests\StoreUserRequest;
+// use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -16,7 +18,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        $data['users'] = User::orderBy('id','desc');
+        // $data['users'] = User::orderBy('id','desc');//->paginate(20);
+        $data['users'] = User::paginate(5);
         return view('home',$data);
     }
 
@@ -36,10 +39,37 @@ class UserController extends Controller
      * @param  \App\Http\Requests\StoreUserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserRequest $request)
+    //public function store(StoreUserRequest $request)
+    public function store(Request $request)
     {
         //
-        // $request->validate
+        // 
+
+        $request->validate([
+            'firstname' => 'required',
+            'lastname'=> 'required',
+            'username' => 'required',
+            'email'=> 'required',
+            'password'=> 'required',
+            'emplyeeID'=> 'required|unique:users',
+            'roles'=> 'required',
+            //'permission'=> 'required',
+            'mobile' => 'required',
+        ]);
+
+        
+
+         $user = User::create($request->all());
+         $user->fill([
+            'password' => Hash::make($user->password)
+        ])->save();
+        
+
+        //dd($request->all());
+
+        
+
+        return redirect()->action([UserController::class, 'index'])->with(['success' => 'user successfully deleted']) ;
     }
 
     /**
@@ -71,9 +101,26 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    //public function update(UpdateUserRequest $request, User $user)
+    public function update(Request $request, User $user)
     {
         //
+        $request->validate([
+            'firstname' => 'required',
+            'lastname'=> 'required',
+            'username' => 'required',
+            'email'=> 'required',
+            'password'=> 'required',
+            'emplyeeID'=> 'required|unique',
+            'roles'=> 'required',
+            'title'=> 'required',
+            //'permission'=> 'required',
+            'mobile' => 'required',
+        ]);
+
+        $user->update($request->all());
+
+        return redirect()->action([UserController::class, 'index'])->with(['success' => 'user successfully deleted']) ;
     }
 
     /**
@@ -85,5 +132,9 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        $user->delete();
+        // return redirect()->route('/')->with(['success' => 'user successfully deleted']);
+        return redirect()->action([UserController::class, 'index'])->with(['success' => 'user successfully deleted']) ;
+
     }
 }
