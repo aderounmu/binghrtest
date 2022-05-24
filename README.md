@@ -20,7 +20,7 @@ cd binghrtest
 
 ```
 
-Setup laravel with docker
+Setup laravel with docker 
 
 ```bash
   docker run --rm \
@@ -31,7 +31,7 @@ Setup laravel with docker
     composer install --ignore-platform-reqs
 ```
 
-Starting localhost using sail `make sure docker or docker desktop is running`
+Starting localhost using sail `make sure docker or docker desktop is running make sure mysql isn't running in the background`
 ```bash
 ./vendor/bin/sail up
 ```
