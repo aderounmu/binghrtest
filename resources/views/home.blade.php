@@ -214,202 +214,7 @@
                 </div>
             
             </section>
-            {{-- User form --}}
-            <Section id="modal-form" class="hidden absolute w-full h-full top-0 left-0 bg-slate-300/80 flex justify-center items-center z-20">
-                <form id='user-form' class="bg-white rounded w-3/4" method="POST">
-                    @csrf
-                    <header class="p-5 flex flex-row justify-between border-gray-300 border-b-[0.5px]">
-                        <div class="text-lg font-semibold user-text">Add User</div>
-                        <div><button class="close-button"><i class="fa-solid fa-xmark text-xl"></i></button></div>
-                    </header>
-                    <div class="px-5 py-3">
-                        <div class="py-3">
-                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
-                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="emplyeeID" id="emplyeeID" placeholder="Employee ID *">
-                            </div>
-                        </div>
-                        <div class="grid justify-items-stretch grid-cols-2 gap-4 py-3">
-                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
-                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="firstname" id="firstname" placeholder="First Name *">
-                            </div>
-                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
-                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="lastname" id="lastname" placeholder="Last Name *">
-                            </div>
-                        </div>
-                        <div class="grid justify-items-stretch grid-cols-3 gap-4 py-3">
-                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
-                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="email" id="email" placeholder="Email ID*">
-                            </div>
-                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
-                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="mobile" id="mobile" placeholder="Mobile No *">
-                            </div>
-
-                            <div class="rounded-md border-[0.2px] border-gray-300 px-3 py-1 text-sm bg-white "> 
-                                <div class=" w-full grid relative items-center ">
-                                    {{-- <select class="appearance-none  w-full justify-between bg-opacity-0 z-[1]" style="background-color: transparent;" id="roles" name="roles">
-                                        <option>Select Role Type</option>
-                                        <option value="CEO and Founder">CEO and Founder</option>
-                                        <option value="Team Lead">Team Lead</option>
-                                        <option value="HR">HR</option>
-                                        <option value="Web Developer">Web Developer</option>
-                                        <option value="App Designer">App Designer</option>
-                                    </select> --}}
-                                    <select class="appearance-none  w-full justify-between bg-opacity-0 z-[1]" style="background-color: transparent;" id="permission" name="permission">
-                                        <option>Select Role Type</option>
-                                        <option value="Super Admin">Super Admin</option>
-                                        <option value="Admin">Admin</option>
-                                        <option value="HR Admin">HR Admin</option>
-                                        <option value="Employee">Employee</option>
-                                        {{-- <option value="App Designer">App Designer</option> --}}
-                                    </select>
-                                    <i class="fa-solid fa-sort text-black absolute right-2"></i>
-                                </div>
-                                
-                                {{-- <ul class="options"></ul> --}}
-                            </div>
-                            
-                        </div>
-                        <div class="grid justify-items-stretch grid-cols-3 gap-4 py-3">
-                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
-                                <input class="text-black w-full placeholder-black" type="text" name="username" id="username" placeholder="Username*">
-                            </div>
-                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
-                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="password" id="password" placeholder="Password*">
-                            </div>
-                            <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
-                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="confirm_password" id="confirm_password" placeholder="Confirm Password*">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <table class="w-full table-auto">
-                            <thead class="bg-gray-200 text-left text-gray-500">
-                                <tr>
-                                    <th> <div class="my-3 pl-5">Module Permission</div> </th>
-                                    <th> <div class="my-3">Read </div>  </th>
-                                    <th> <div class="my-3">Write </div> </th>
-                                    <th> <div class="my-3">Delete</div> </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="">
-                                    <td>
-                                        <div class="ml-5 py-5 flex flex-row items-center border-gray-300 border-b-[1px] pr-24 h-[60px]">
-                                            <span class="font-bold text-base ">Super Admin</span>
-                                        </div>
-                                    </td>
-                                    <td> 
-                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
-                                            {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
-                                            <i class="fa-solid fa-square-check"></i>
-                                        </div> 
-                                    </td>
-                                    <td> 
-                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
-                                            {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
-                                             <i class="fa-solid fa-square-check"></i>
-                                        </div> 
-                                    </td>
-                                    <td> 
-                                        <div class=" mr-5 border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
-                                            {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
-                                             <i class="fa-solid fa-square-check"></i>
-                                        </div> 
-                                    </td>
-                                </tr>
-
-                                <tr class="">
-                                    <td>
-                                        <div class="ml-5 py-5 flex flex-row items-center border-gray-300 border-b-[1px] pr-24 h-[60px]">
-                                            <span class="font-bold text-base ">Admin</span>
-                                        </div>
-                                    </td>
-                                    <td> 
-                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
-                                            {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
-                                             <i class="fa-solid fa-square-check"></i>
-                                        </div> 
-                                    </td>
-                                    <td> 
-                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
-                                            {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault"> --}}
-                                            <i class="fa-regular fa-square"></i>
-                                        </div> 
-                                    </td>
-                                    <td> 
-                                        <div class=" mr-5 border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
-                                            {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault"> --}}
-                                            <i class="fa-regular fa-square"></i>
-                                        </div> 
-                                    </td>
-                                </tr>
-
-                                <tr class="">
-                                    <td>
-                                        <div class="ml-5 py-5 flex flex-row items-center border-gray-300 border-b-[1px] pr-24 h-[60px]">
-                                            <span class="font-bold text-base ">Employee</span>
-                                        </div>
-                                    </td>
-                                    <td> 
-                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
-                                            {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
-                                             <i class="fa-solid fa-square-check"></i>
-                                        </div> 
-                                    </td>
-                                    <td> 
-                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
-                                            {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault"> --}}
-                                            <i class="fa-regular fa-square"></i>
-                                        </div> 
-                                    </td>
-                                    <td> 
-                                        <div class=" mr-5 border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
-                                            {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault"> --}}
-                                            <i class="fa-regular fa-square"></i>
-                                        </div> 
-                                    </td>
-                                </tr>
-
-                                <tr class="">
-                                    <td>
-                                        <div class="ml-5 py-5 flex flex-row items-center border-gray-300 border-b-[1px] pr-24 h-[60px]">
-                                            <span class="font-bold text-base ">HR Admin</span>
-                                        </div>
-                                    </td>
-                                    <td> 
-                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
-                                            {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
-                                             <i class="fa-solid fa-square-check"></i>
-                                        </div> 
-                                    </td>
-                                    <td> 
-                                        <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
-                                            {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
-                                             <i class="fa-solid fa-square-check"></i>
-                                        </div> 
-                                    </td>
-                                    <td> 
-                                        <div class=" mr-5 border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
-                                            {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
-                                             <i class="fa-solid fa-square-check"></i>
-                                        </div> 
-                                    </td>
-                                </tr>
-
-                               
-    
-                                
-                                
-                            </tbody> 
-                        </table>
-                    </div>
-                    <div class="flex flex-row justify-end p-5  border-gray-300 border-t-[1px] ">
-                        <div> <button type="submit" class=" bg-blue-500 py-1 px-4 text-white rounded-lg text-sm user-text"> Add User</button></div>
-                        <div> <button class=" close-button py-1 px-4 text-gray-300 rounded-lg text-sm"> Cancel</button></div>
-                    </div>
-
-                </form>
-            </Section>
+           
 
             {{-- Footer --}}
             <section class="mt-10 mb-5">
@@ -418,7 +223,202 @@
         </div>
 
        
-    
+     {{-- User form --}}
+     <Section id="modal-form" class="hidden absolute w-full h-full top-0 left-0 bg-slate-300/80 flex justify-center items-center z-20">
+        <form id='user-form' class="bg-white rounded w-3/4" method="POST">
+            @csrf
+            <header class="p-5 flex flex-row justify-between border-gray-300 border-b-[0.5px]">
+                <div class="text-lg font-semibold user-text">Add User</div>
+                <div><button class="close-button"><i class="fa-solid fa-xmark text-xl"></i></button></div>
+            </header>
+            <div class="px-5 py-3">
+                <div class="py-3">
+                    <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                        <input class="inline-flex w-full text-black placeholder-black" type="text" name="emplyeeID" id="emplyeeID" placeholder="Employee ID *">
+                    </div>
+                </div>
+                <div class="grid justify-items-stretch grid-cols-2 gap-4 py-3">
+                    <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                        <input class="inline-flex w-full text-black placeholder-black" type="text" name="firstname" id="firstname" placeholder="First Name *">
+                    </div>
+                    <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                        <input class="inline-flex w-full text-black placeholder-black" type="text" name="lastname" id="lastname" placeholder="Last Name *">
+                    </div>
+                </div>
+                <div class="grid justify-items-stretch grid-cols-3 gap-4 py-3">
+                    <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                        <input class="inline-flex w-full text-black placeholder-black" type="text" name="email" id="email" placeholder="Email ID*">
+                    </div>
+                    <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                        <input class="inline-flex w-full text-black placeholder-black" type="text" name="mobile" id="mobile" placeholder="Mobile No *">
+                    </div>
+
+                    <div class="rounded-md border-[0.2px] border-gray-300 px-3 py-1 text-sm bg-white "> 
+                        <div class=" w-full grid relative items-center ">
+                            {{-- <select class="appearance-none  w-full justify-between bg-opacity-0 z-[1]" style="background-color: transparent;" id="roles" name="roles">
+                                <option>Select Role Type</option>
+                                <option value="CEO and Founder">CEO and Founder</option>
+                                <option value="Team Lead">Team Lead</option>
+                                <option value="HR">HR</option>
+                                <option value="Web Developer">Web Developer</option>
+                                <option value="App Designer">App Designer</option>
+                            </select> --}}
+                            <select class="appearance-none  w-full justify-between bg-opacity-0 z-[1]" style="background-color: transparent;" id="permission" name="permission">
+                                <option>Select Role Type</option>
+                                <option value="Super Admin">Super Admin</option>
+                                <option value="Admin">Admin</option>
+                                <option value="HR Admin">HR Admin</option>
+                                <option value="Employee">Employee</option>
+                                {{-- <option value="App Designer">App Designer</option> --}}
+                            </select>
+                            <i class="fa-solid fa-sort text-black absolute right-2"></i>
+                        </div>
+                        
+                        {{-- <ul class="options"></ul> --}}
+                    </div>
+                    
+                </div>
+                <div class="grid justify-items-stretch grid-cols-3 gap-4 py-3">
+                    <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                        <input class="text-black w-full placeholder-black" type="text" name="username" id="username" placeholder="Username*">
+                    </div>
+                    <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                        <input class="inline-flex w-full text-black placeholder-black" type="text" name="password" id="password" placeholder="Password*">
+                    </div>
+                    <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
+                        <input class="inline-flex w-full text-black placeholder-black" type="text" name="confirm_password" id="confirm_password" placeholder="Confirm Password*">
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <table class="w-full table-auto">
+                    <thead class="bg-gray-200 text-left text-gray-500">
+                        <tr>
+                            <th> <div class="my-3 pl-5">Module Permission</div> </th>
+                            <th> <div class="my-3">Read </div>  </th>
+                            <th> <div class="my-3">Write </div> </th>
+                            <th> <div class="my-3">Delete</div> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td>
+                                <div class="ml-5 py-5 flex flex-row items-center border-gray-300 border-b-[1px] pr-24 h-[60px]">
+                                    <span class="font-bold text-base ">Super Admin</span>
+                                </div>
+                            </td>
+                            <td> 
+                                <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                    {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
+                                    <i class="fa-solid fa-square-check"></i>
+                                </div> 
+                            </td>
+                            <td> 
+                                <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                    {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
+                                     <i class="fa-solid fa-square-check"></i>
+                                </div> 
+                            </td>
+                            <td> 
+                                <div class=" mr-5 border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                    {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
+                                     <i class="fa-solid fa-square-check"></i>
+                                </div> 
+                            </td>
+                        </tr>
+
+                        <tr class="">
+                            <td>
+                                <div class="ml-5 py-5 flex flex-row items-center border-gray-300 border-b-[1px] pr-24 h-[60px]">
+                                    <span class="font-bold text-base ">Admin</span>
+                                </div>
+                            </td>
+                            <td> 
+                                <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                    {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
+                                     <i class="fa-solid fa-square-check"></i>
+                                </div> 
+                            </td>
+                            <td> 
+                                <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                    {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault"> --}}
+                                    <i class="fa-regular fa-square"></i>
+                                </div> 
+                            </td>
+                            <td> 
+                                <div class=" mr-5 border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                    {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault"> --}}
+                                    <i class="fa-regular fa-square"></i>
+                                </div> 
+                            </td>
+                        </tr>
+
+                        <tr class="">
+                            <td>
+                                <div class="ml-5 py-5 flex flex-row items-center border-gray-300 border-b-[1px] pr-24 h-[60px]">
+                                    <span class="font-bold text-base ">Employee</span>
+                                </div>
+                            </td>
+                            <td> 
+                                <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                    {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
+                                     <i class="fa-solid fa-square-check"></i>
+                                </div> 
+                            </td>
+                            <td> 
+                                <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                    {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault"> --}}
+                                    <i class="fa-regular fa-square"></i>
+                                </div> 
+                            </td>
+                            <td> 
+                                <div class=" mr-5 border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                    {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault"> --}}
+                                    <i class="fa-regular fa-square"></i>
+                                </div> 
+                            </td>
+                        </tr>
+
+                        <tr class="">
+                            <td>
+                                <div class="ml-5 py-5 flex flex-row items-center border-gray-300 border-b-[1px] pr-24 h-[60px]">
+                                    <span class="font-bold text-base ">HR Admin</span>
+                                </div>
+                            </td>
+                            <td> 
+                                <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                    {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
+                                     <i class="fa-solid fa-square-check"></i>
+                                </div> 
+                            </td>
+                            <td> 
+                                <div class=" border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                    {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
+                                     <i class="fa-solid fa-square-check"></i>
+                                </div> 
+                            </td>
+                            <td> 
+                                <div class=" mr-5 border-gray-300 flex flex-row items-center border-b-[1px]  h-[60px] "> 
+                                    {{-- <input class=" form-checkbox h-4 w-4 text-black border-black rounded-md focus:ring-0" type="checkbox" value="" id="flexCheckDefault" checked> --}}
+                                     <i class="fa-solid fa-square-check"></i>
+                                </div> 
+                            </td>
+                        </tr>
+
+                       
+
+                        
+                        
+                    </tbody> 
+                </table>
+            </div>
+            <div class="flex flex-row justify-end p-5  border-gray-300 border-t-[1px] ">
+                <div> <button type="submit" class=" bg-blue-500 py-1 px-4 text-white rounded-lg text-sm user-text"> Add User</button></div>
+                <div> <button class=" close-button py-1 px-4 text-gray-300 rounded-lg text-sm"> Cancel</button></div>
+            </div>
+
+        </form>
+    </Section>
 
 
 
