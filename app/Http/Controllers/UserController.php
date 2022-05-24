@@ -128,7 +128,7 @@ class UserController extends Controller
             'mobile' => 'required',
         ]);
          if($request->password === null){
-             $request->password = $user->password ;
+             
             $user->update([
                 'firstname' => $request->firstname,
                 'lastname'=> $request->lastname,
@@ -141,6 +141,10 @@ class UserController extends Controller
             ]);
             
          }else{
+            $request->validate([
+                'password'=> 'required_with:confirm_password|min:6|same:confirm_password',
+                'confirm_password' => 'min:6',
+            ]);
             $user->update($request->all());
             $user->fill([
                 'password' => Hash::make($user->password)

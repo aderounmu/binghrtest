@@ -12,6 +12,9 @@
         th, td {
             padding: 0px;
         }
+        html,body {
+            height: 100%;
+        }
     </style>
 </head>
 <body class="">
@@ -29,80 +32,80 @@
         </div>
     </div>
     @endif
-    <div class='flex flex-row w-100'>
+    <div class='flex flex-row w-100 h-full'>
         {{-- aside --}}
         <div class='x-sidebar fixed flex flex-row h-screen items-stretch overflow-y-auto z-10'> 
             {{-- side Bar outer --}}
-        <aside  class="flex flex-col self-auto justify-between bg-blue-500 px-3 text-gray-100">
-            <div class='pt-20'>
-                <ul>
-                    <li class="py-4">
-                        <button>
-                            <span><i class="fa-solid fa-magnifying-glass "></i></span>
-                        </button>
-                    </li>
-                    <li class="py-4">
-                        <button>
-                            <x-feathericon-calendar class="h-5 w-5 inline-block" />
-                        </button>
-                    </li>
-                    <li class="py-4">
-                        <button>
-                            <x-uni-user-o class="h-5 w-5 inline-block" />
-                        </button>
-                    </li>
-                    <li class="py-4">
-                        <button>
-                            <x-monoicon-document-empty class="h-5 w-5 inline-block"  />
-                        </button>
-                    </li>
-                    <li class="py-4">
-                        <button>
-                            <x-heroicon-o-chat class="h-5 w-5 inline-block" />
-                        </button>
-                    </li>
+            <aside  class="flex flex-col self-auto justify-between bg-blue-500 px-3 text-gray-100">
+                <div class='pt-20'>
+                    <ul>
+                        <li class="py-4">
+                            <button>
+                                <span><i class="fa-solid fa-magnifying-glass "></i></span>
+                            </button>
+                        </li>
+                        <li class="py-4">
+                            <button>
+                                <x-feathericon-calendar class="h-5 w-5 inline-block" />
+                            </button>
+                        </li>
+                        <li class="py-4">
+                            <button>
+                                <x-uni-user-o class="h-5 w-5 inline-block" />
+                            </button>
+                        </li>
+                        <li class="py-4">
+                            <button>
+                                <x-monoicon-document-empty class="h-5 w-5 inline-block"  />
+                            </button>
+                        </li>
+                        <li class="py-4">
+                            <button>
+                                <x-heroicon-o-chat class="h-5 w-5 inline-block" />
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="inline-flex flex-col items-center">
+                        <li class="py-4">
+                            <button>
+                                <span><i class="fa-solid fa-gear "></i></span>
+                            </button>
+                        </li>
+                        <li class="py-4">
+                            <a href="#">
+                                <img class="w-5 h-5 rounded-full" src="{{asset('images/16.jpeg')}}" alt="user-image"/>
+                            </a >
+                        </li>
+                        <li class="py-4">
+                            <button id="close-side-bar-inner">
+                                <x-css-menu-right class="h-5 w-5 inline-block scale-x-[-1]" />
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            {{-- Side Navigation inner --}}
+            <aside id="side-bar-inner">
+                <ul class='pt-24 pl-5'>
+                    <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-monoicon-window class="h-5 w-5 inline-block" /> <span class="pl-2">Dashboard</span></li>
+                    <li class="py-1 pr-4 text-blue-500 border-r-4 border-blue-500 flex flex-row items-center"> <x-uni-users-alt-o class="h-5 w-5 inline-block"/> <span class="pl-2">Users</span> </li>
+                    <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-feathericon-clipboard class="h-5 w-5 inline-block"/> <span class="pl-2">Department</span></li>
+                    <li class="py-1 pr-5 text-gray-300 flex flex-row items-center">  <x-uni-users-alt-o class="h-5 w-5 inline-block"/> <span class="pl-2">Employee</span></li>
+                    <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-simpleline-energy class="h-5 w-5 inline-block" /> <span class="pl-2">Activities</span></li>
+                    <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-feathericon-check-circle class="h-5 w-5 inline-block" /><span class="pl-2"> Holidays</span></li>
+                    <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-phosphor-fire-simple-bold class="h-5 w-5 inline-block"  /> <span class="pl-2">Events</span></li>
+                    <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-heroicon-o-credit-card class="h-5 w-5 inline-block" /><span class="pl-2">Payroll</span></li>
+                    <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-uni-user-o class="h-5 w-5 inline-block" /> <span class="pl-2">Accounts</span></li>
+                    <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-heroicon-o-exclamation-circle class="h-5 w-5 inline-block" /> <span class="pl-2">Reports</span></li>
                 </ul>
-            </div>
-            <div>
-                <ul class="inline-flex flex-col items-center">
-                    <li class="py-4">
-                        <button>
-                            <span><i class="fa-solid fa-gear "></i></span>
-                        </button>
-                    </li>
-                    <li class="py-4">
-                        <a href="#">
-                            <img class="w-5 h-5 rounded-full" src="{{asset('images/16.jpeg')}}" alt="user-image"/>
-                        </a >
-                    </li>
-                    <li class="py-4">
-                        <button id="close-side-bar-inner">
-                            <x-css-menu-right class="h-5 w-5 inline-block scale-x-[-1]" />
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-        {{-- Side Navigation inner --}}
-        <aside id="side-bar-inner">
-            <ul class='pt-24 pl-5'>
-                <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-monoicon-window class="h-5 w-5 inline-block" /> <span class="pl-2">Dashboard</span></li>
-                <li class="py-1 pr-4 text-blue-500 border-r-4 border-blue-500 flex flex-row items-center"> <x-uni-users-alt-o class="h-5 w-5 inline-block"/> <span class="pl-2">Users</span> </li>
-                <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-feathericon-clipboard class="h-5 w-5 inline-block"/> <span class="pl-2">Department</span></li>
-                <li class="py-1 pr-5 text-gray-300 flex flex-row items-center">  <x-uni-users-alt-o class="h-5 w-5 inline-block"/> <span class="pl-2">Employee</span></li>
-                <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-simpleline-energy class="h-5 w-5 inline-block" /> <span class="pl-2">Activities</span></li>
-                <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-feathericon-check-circle class="h-5 w-5 inline-block" /><span class="pl-2"> Holidays</span></li>
-                <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-phosphor-fire-simple-bold class="h-5 w-5 inline-block"  /> <span class="pl-2">Events</span></li>
-                <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-heroicon-o-credit-card class="h-5 w-5 inline-block" /><span class="pl-2">Payroll</span></li>
-                <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-uni-user-o class="h-5 w-5 inline-block" /> <span class="pl-2">Accounts</span></li>
-                <li class="py-1 pr-5 text-gray-300 flex flex-row items-center"> <x-heroicon-o-exclamation-circle class="h-5 w-5 inline-block" /> <span class="pl-2">Reports</span></li>
-            <ul>
-        </aside>
+            </aside>
 
 
         </div>
         {{-- Body --}}
-        <div id='x-body' class="x-body grow px-5 ml-48 bg-[#FAFBFD]">
+        <div id='x-body' class="x-body h-full min-h-full flex flex-col grow w-full px-5 ml-48 bg-[#FAFBFD]">
             {{-- Navigation --}}
             <nav class="border-gray-300 flex flex-row border-b-[0.5px] justify-between py-4 items-center">
                 <div class="left-side flex flex-row items-center">
@@ -217,8 +220,8 @@
            
 
             {{-- Footer --}}
-            <section class="mt-10 mb-5">
-                <div> <span class=" text-gray-300">© Copy right 2022</span> BingHR.io </div>
+            <section class="mb-6 mt-auto">
+                <div class="mt-3"> <span class=" text-gray-300">© Copy right 2022</span> BingHR.io </div>
             </section>
         </div>
 
