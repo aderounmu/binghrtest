@@ -51,7 +51,7 @@ Run migrations for laravel and seed database
 
 ```
 
-once done the site on  [localhost](http://localhost/)
+once done start the site on  [localhost](http://localhost/)
 
 ## Features
 
