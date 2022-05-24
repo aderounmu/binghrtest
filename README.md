@@ -37,8 +37,8 @@ Starting localhost using sail `make sure docker or docker desktop is running`
 ```
 
 
-once containers on docker have started start the site on  
-'http://localhost/'
+once containers on docker have started start the site on  [localhost](http://localhost/)
+
 
 
 ## Features
