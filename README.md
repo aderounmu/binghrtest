@@ -46,6 +46,10 @@ once containers on docker have started start the site on [localhost]('http://loc
 - User Deleting
 
 
+
+### `Caveat`
+- Roles are generated randomly from a list in the controller `Reason: Unknown List of od user roles`
+- Permissions are selected from the dropdown *Select Role Type* `Reason: multiple checkbox UX intepretation`
 ## Appendix
 
 Any additional information goes here
