@@ -14,7 +14,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [UserController::class,'index'])->name('home');
-Route::post('/test/store', [UserController::class,'store'])->name('store');
+// Route::post('/test/store', [UserController::class,'store'])->name('store');
 
 Route::resource('users', UserController::class)->only([
     'store','update','destroy'

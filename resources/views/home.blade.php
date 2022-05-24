@@ -140,7 +140,7 @@
 
             {{-- Add user button --}}
             <div class='w-full flex justify-end my-4'>
-                <button data-action="{{route('store')}}" data-edit="false" class='bg-green-800 py-2 px-4 text-white rounded-lg text-sm open-button'> 
+                <button data-action="{{route('users.store')}}" data-edit="false" class='bg-green-800 py-2 px-4 text-white rounded-lg text-sm open-button'> 
                     Add User
                 </button>
             </div>
@@ -196,7 +196,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <div class=" mr-5 border-gray-300 border-b-[1px] flex flex-row items-center justify-start text-center  text-gray-300 h-[90px]">
-                                        <button data-edit="true" data-action="{{route('users.update',$user->id)}}" class="mx-3 open-button"> <x-bx-edit-alt class="h-6 w-6 inline-block" /></button>
+                                        <button data-edit="true" data-action="{{route('users.update',$user->id)}}" data-id="{{$user->id}}" class="mx-3 open-button"> <x-bx-edit-alt class="h-6 w-6 inline-block" /></button>
                                         <button type="submit"><x-css-trash class="h-6 w-6 inline-block"  /></button>
                                     </div>
                                     </form>
@@ -235,7 +235,7 @@
                         </div>
                         <div class="grid justify-items-stretch grid-cols-3 gap-4 py-3">
                             <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
-                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="email" id="lastname" placeholder="Email ID*">
+                                <input class="inline-flex w-full text-black placeholder-black" type="text" name="email" id="email" placeholder="Email ID*">
                             </div>
                             <div class="rounded-md border-[0.2px] bg-white flex flex-row justify-between  border-gray-300 px-3 py-1">
                                 <input class="inline-flex w-full text-black placeholder-black" type="text" name="mobile" id="mobile" placeholder="Mobile No *">
@@ -402,10 +402,31 @@
         </div>
 
        
+    
 
 
 
     </div>
+    <script type="text/javascript">
+
+        var items = {
+            @foreach ($users as $user)
+                "{{$user->id}}":{
+                    'firstname' : "{{$user->firstname}}",
+                    'lastname': "{{$user->lastname}}",
+                    'username' : "{{$user->username}}",
+                    'email': "{{$user->email}}",
+                    'emplyeeID': "{{$user->emplyeeID}}",
+                    'roles': "{{$user->roles}}",
+                    // 'permission': "{{$user->id}}",
+                    'mobile' : "{{$user->mobile}}",
+                },
+
+                
+            @endforeach
+        }
+    
+    </script>
     <script src="{{ asset('js/app.js') }}"></script>
     
 </body>

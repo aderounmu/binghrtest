@@ -110,15 +110,32 @@ class UserController extends Controller
             'lastname'=> 'required',
             'username' => 'required',
             'email'=> 'required',
-            'password'=> 'required',
-            'emplyeeID'=> 'required|unique',
+            'emplyeeID'=> 'required',
             'roles'=> 'required',
-            'title'=> 'required',
             //'permission'=> 'required',
             'mobile' => 'required',
         ]);
+         if($request->password === null){
+             $request->password = $user->password ;
+            $user->update([
+                'firstname' => $request->firstname,
+                'lastname'=> $request->lastname,
+                'username' => $request->username,
+                'email'=> $request->email,
+                'emplyeeID'=> $request->emplyeeID,
+                'roles'=> $request->roles,
+                // 'permission'=> $request->id,
+                'mobile' => $request->mobile,
+            ]);
+            
+         }else{
+            $user->update($request->all());
+            $user->fill([
+                'password' => Hash::make($user->password)
+            ])->save();
+         }
 
-        $user->update($request->all());
+        
 
         return redirect()->action([UserController::class, 'index'])->with(['success' => 'user successfully deleted']) ;
     }
